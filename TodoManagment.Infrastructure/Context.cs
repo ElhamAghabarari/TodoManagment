@@ -20,6 +20,7 @@ namespace TodoManagment.Infrastructure
                 entity.ToTable("Users");
                 entity.HasKey(t => t.Id);
                 entity.HasMany(t => t.Tasks).WithOne(t => t.User);
+                entity.HasIndex(t => t.Email).IsUnique();
 
                 entity.Property(t => t.Id).ValueGeneratedOnAdd(); 
                 entity.Property(t => t.FirstName).IsRequired().HasMaxLength(100);
